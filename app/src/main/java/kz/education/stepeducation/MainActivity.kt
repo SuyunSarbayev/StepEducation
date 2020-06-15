@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun initializeViews(){
-        buttonAction = findViewById(R.id.button_activity_main_action)
+        buttonAction = findViewById(R.id.button_activity_main_update_status)
         textviewStatus = findViewById(R.id.textview_activity_main_status)
     }
 
