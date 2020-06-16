@@ -1,13 +1,22 @@
 package kz.education.stepeducation
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 
 class StudentsActivity : AppCompatActivity(){
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    var students: ArrayList<String> = ArrayList<String>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_students)
+//        students.add("Grigoriy")
+//        (0..15).forEach{index ->
+//            System.out.println(students.get(index))
+//        }
+//        students.forEach { student ->
+//            System.out.println(student)
+//        }
+//        System.out.println()
     }
 }
