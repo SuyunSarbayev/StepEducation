@@ -93,6 +93,7 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
     fun initializeListeners(){
         buttonAction!!.setOnClickListener(View.OnClickListener {
+            textviewStatus!!.setText("")
             if(initiateCheckPermission()){
                 initiateSendSMS("77081170832")
             }else{
