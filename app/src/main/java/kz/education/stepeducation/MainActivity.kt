@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     var buttonAction: Button? = null
     var textviewStatus: TextView? = null
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("LIFE", "onCreate")
@@ -86,7 +87,7 @@ class MainActivity : AppCompatActivity() {
 
     fun initializeViews(){
         buttonAction = findViewById(R.id.button_activity_main_update_status)
-        textviewStatus = findViewById(R.id.textview_activity_main_status)
+//        textviewStatus = findViewById(R.id.textview_activity_main_status)
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -106,10 +107,6 @@ class MainActivity : AppCompatActivity() {
     fun initiateSendSMS(phone: String){
         var smsManager = SmsManager.getDefault()
         smsManager.sendTextMessage(phone, null,"sms-message", null,null)
-//        var smsIntent = Intent(Intent.ACTION_VIEW)
-//        smsIntent.putExtra("sms body", "default-content")
-//        smsIntent.setType("vnd.android-dir/mms-sms")
-//        startActivity(smsIntent)
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
