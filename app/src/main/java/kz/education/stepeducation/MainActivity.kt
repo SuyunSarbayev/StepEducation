@@ -1,5 +1,6 @@
 package kz.education.stepeducation
 
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -20,10 +21,17 @@ class MainActivity : AppCompatActivity() {
     var buttonAction: Button? = null
     var textviewStatus: TextView? = null
 
+    var REQUEST_CODE_ONE = 1
+    var REQUEST_CODE_TWO = 2
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("LIFE", "onCreate")
+
+//        Intent(kz.package.stepeducation, StudentsActivity.class) ----> ActivityManager ---->
+//        Manifest (StudentsActivity) ----> StudentsActivity.class ----> onCreate() ----> new page!
+
         setContentView(R.layout.activity_main)
         initializeViews()
         initializeListeners()
@@ -93,13 +101,13 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
     fun initializeListeners(){
         buttonAction!!.setOnClickListener(View.OnClickListener {
-            textviewStatus!!.setText("")
-            if(initiateCheckPermission()){
-                initiateSendSMS("77081170832")
-            }else{
-                initiateRequestPermission()
-            }
-//            initiateStudentsActivityTransition()
+//            textviewStatus!!.setText("")
+//            if(initiateCheckPermission()){
+//                initiateSendSMS("77081170832")
+//            }else{
+//                initiateRequestPermission()
+//            }
+            initiateStudentsActivityTransition()
 //            textviewStatus!!.setText(getString(R.string.acitvity_main_textview_status_pressed))
 //            textviewStatus!!.setTextColor(ContextCompat.getColor(this, R.color.colorAccent))
         })
@@ -136,7 +144,30 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when(requestCode){
+            REQUEST_CODE_ONE -> {
+                when(resultCode){
+                    Activity.RESULT_OK -> {
+                        Log.d("DATA", data?.getStringExtra("Name"))
+                    }
+                    Activity.RESULT_CANCELED -> {
+                        Log.d("DATA IS BAD", data?.getStringExtra("Name"))
+                    }
+                }
+            }
+            REQUEST_CODE_TWO -> {
+
+            }
+        }
+    }
+
     fun initiateStudentsActivityTransition(){
-        startActivity(Intent(this, StudentsActivity::class.java))
+        startActivityForResult(Intent(this, StudentsActivity::class.java), REQUEST_CODE_ONE)
+    }
+
+    fun initiateStudentsActivityTransitionSecond(){
+        startActivityForResult(Intent(this, StudentsActivity::class.java), REQUEST_CODE_TWO)
     }
 }

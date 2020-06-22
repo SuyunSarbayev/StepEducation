@@ -13,4 +13,5 @@
     <string name="dialog_restaurant_information_close">OK</string>
 
     <string name="app_name">StepEducation</string>
+    <string name="title_activity_example">ExampleActivity</string>
 </resources>
