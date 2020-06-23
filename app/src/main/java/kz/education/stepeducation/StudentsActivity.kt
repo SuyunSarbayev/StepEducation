@@ -1,46 +1,35 @@
 package kz.education.stepeducation
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 
 class StudentsActivity : AppCompatActivity(){
 
-    var students: ArrayList<String> = ArrayList<String>()
+    lateinit var fragmentManager: FragmentManager
 
-    var buttonOne: Button? = null
-    var buttonTwo: Button? = null
+    var currentFragment: Fragment? = null
 
-    TextView
-    AppCompatTextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_students)
-        initializeViews()
-        initializeListeners()
 
+        initializeFragmentManager()
+        initializeDefaultFragment()
     }
 
-    fun initializeViews(){
-        buttonOne = findViewById(R.id.button_activity_students_sort_byname)
-        buttonTwo = findViewById(R.id.button_activity_students_sort_random)
+    fun initializeFragmentManager() {
+        fragmentManager = supportFragmentManager
     }
 
-    fun initializeListeners(){
-        buttonOne?.setOnClickListener {
-            setResult(Activity.RESULT_OK, Intent().apply {
-                putExtra("Name", "Good")
-            })
-            finish()
-        }
+    fun initializeDefaultFragment(){
+        if(currentFragment == null){
+            currentFragment = StudentsFragment()
 
-        buttonTwo?.setOnClickListener {
-            setResult(Activity.RESULT_CANCELED, Intent().apply {
-                putExtra("Name", "Bad")
-            })
-            finish()
+            fragmentManager.beginTransaction()
+                .add(R.id.relativelayout_activity_students_fragment_container, currentFragment!!)
+                .commit()
         }
     }
 }
