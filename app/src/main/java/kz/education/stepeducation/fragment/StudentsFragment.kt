@@ -20,11 +20,11 @@ class StudentsFragment : Fragment(){
 
     var rootView: View? = null
 
-    var students: ArrayList<Student> = ArrayList()
+    var students: ArrayList<Student> = ArrayList() // Контейнер с деталями
 
-    var recyclerViewStudents: RecyclerView? = null
+    var recyclerViewStudents: RecyclerView? = null // Автосалон
 
-    var studentsAdapter: StudentsAdapter? = null
+    var studentsAdapter: StudentsAdapter? = null // Рабочий на конвеере
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,6 +65,25 @@ class StudentsFragment : Fragment(){
         students.add(Student("Vasya", "Good Student"))
         students.add(Student("John", "Bad Student"))
         students.add(Student("Log", "Average Student"))
+        students.add(Student("Log", "Average Student"))
+        students.add(Student("Log", "Average Student"))
+        students.add(Student("Log", "Average Student"))
+        students.add(Student("Log", "Average Student"))
+        students.add(Student("Log", "Average Student"))
+        students.add(Student("Log", "Average Student"))
+        students.add(Student("Log", "Average Student"))
+        students.add(Student("Log", "Average Student"))
+        students.add(Student("Log", "Average Student"))
+        students.add(Student("Log", "Average Student"))
+        students.add(Student("Log", "Average Student"))
+        students.add(Student("Log", "Average Student"))
+        students.add(Student("Log", "Average Student"))
+        students.add(Student("Log", "Average Student"))
+        students.add(Student("Log", "Average Student"))
+        students.add(Student("Log", "Average Student"))
+        students.add(Student("Log", "Average Student"))
+        students.add(Student("Log", "Average Student"))
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

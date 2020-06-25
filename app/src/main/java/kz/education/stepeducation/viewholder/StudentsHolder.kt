@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import kz.education.stepeducation.R
 import kz.education.stepeducation.data.Student
 
+
+// Каркас
 class StudentsHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
     var context: Context? = null

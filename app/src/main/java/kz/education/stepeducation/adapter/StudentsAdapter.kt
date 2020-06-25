@@ -1,6 +1,7 @@
 package kz.education.stepeducation.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,6 +9,7 @@ import kz.education.stepeducation.R
 import kz.education.stepeducation.data.Student
 import kz.education.stepeducation.viewholder.StudentsHolder
 
+// Рабочии на конвеере
 class StudentsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     var context: Context? = null
@@ -19,6 +21,7 @@ class StudentsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        Log.d("Adapter", "onCreateViewHolder")
         var view = LayoutInflater.from(context).inflate(R.layout.viewholder_student, parent, false)
         return StudentsHolder(view)
     }
@@ -28,6 +31,7 @@ class StudentsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        Log.d("Adapter", "onBindViewHolder")
         (holder as StudentsHolder).initiateBind(students.get(position))
     }
 }
