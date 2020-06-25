@@ -1,18 +1,33 @@
 package kz.education.stepeducation.adapter
 
+import android.content.Context
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import kz.education.stepeducation.R
+import kz.education.stepeducation.data.Student
+import kz.education.stepeducation.viewholder.StudentsHolder
 
-class StudentsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class StudentsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+    var context: Context? = null
+    lateinit var students: ArrayList<Student>
+
+    constructor(context: Context?, students: ArrayList<Student>){
+        this.context = context
+        this.students = students
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        var view = LayoutInflater.from(context).inflate(R.layout.viewholder_student, parent, false)
+        return StudentsHolder(view)
     }
 
     override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return students?.size ?: 0
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        (holder as StudentsHolder).initiateBind(students.get(position))
     }
 }

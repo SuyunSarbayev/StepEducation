@@ -6,13 +6,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import kz.education.stepeducation.R
+import kz.education.stepeducation.adapter.StudentsAdapter
+import kz.education.stepeducation.data.Student
 
 class StudentsFragment : Fragment(){
 
     //Student
     //ViewHolder
     //Adapter
+
+    var rootView: View? = null
+
+    var students: ArrayList<Student> = ArrayList()
+
+    var recyclerViewStudents: RecyclerView? = null
+
+    var studentsAdapter: StudentsAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,12 +34,27 @@ class StudentsFragment : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view: View = LayoutInflater.from(context).inflate(
+        rootView= LayoutInflater.from(context).inflate(
             R.layout.fragment_students,
                 container,
                 false)
 
-        return view
+        return rootView
+    }
+
+    fun initializeViews(){
+        recyclerViewStudents = rootView?.findViewById(R.id.recyclerview_fragment_students)
+    }
+
+    fun initializeAdapter(){
+        studentsAdapter = StudentsAdapter(context, students)
+        recyclerViewStudents?.adapter = studentsAdapter
+    }
+
+    fun initializeData(){
+        students.add(Student("Vasya", "Good Student"))
+        students.add(Student("John", "Bad Student"))
+        students.add(Student("Log", "Average Student"))
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

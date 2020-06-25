@@ -19,7 +19,6 @@ class StudentsHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     }
 
     fun initializeViews(){
-        textViewName.setText(context.getString(R.string.viewholder_student_name_header, "Kirill"))
         textViewName = itemView.findViewById(R.id.textview_viewholder_student_name)
         textViewDescription = itemView.findViewById(R.id.textview_viewholder_student_description)
     }
