@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kz.education.stepeducation.R
 import kz.education.stepeducation.adapter.StudentsAdapter
@@ -39,11 +40,20 @@ class StudentsFragment : Fragment(){
                 container,
                 false)
 
+        initializeViews()
+        initializeData()
+        initializeLayoutManager()
+        initializeAdapter()
+
         return rootView
     }
 
     fun initializeViews(){
         recyclerViewStudents = rootView?.findViewById(R.id.recyclerview_fragment_students)
+    }
+
+    fun initializeLayoutManager(){
+        recyclerViewStudents?.layoutManager = LinearLayoutManager(context)
     }
 
     fun initializeAdapter(){

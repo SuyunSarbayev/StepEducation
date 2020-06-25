@@ -16,7 +16,6 @@ class StudentsActivity : AppCompatActivity(){
         setContentView(R.layout.activity_students)
 
         initializeDefaultFragment()
-        displayFragment(StudentsDetailFragment())
     }
 
     fun initializeDefaultFragment(){
