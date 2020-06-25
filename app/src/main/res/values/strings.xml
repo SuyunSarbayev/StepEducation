@@ -12,6 +12,8 @@
 
     <string name="fragment_students_press_me">Press me!</string>
 
+    <string name="viewholder_student_name_header">Имя студента: </string>
+    <string name="viewholder_student_description_header">Описание: </string>
     <string name="dialog_restaurant_information_close">OK</string>
 
     <string name="app_name">StepEducation</string>

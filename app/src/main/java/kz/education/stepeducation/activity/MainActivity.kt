@@ -1,4 +1,4 @@
-package kz.education.stepeducation
+package kz.education.stepeducation.activity
 
 import android.app.Activity
 import android.content.Intent
@@ -14,7 +14,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import java.util.jar.Manifest
+import kz.education.stepeducation.R
 
 class MainActivity : AppCompatActivity() {
 

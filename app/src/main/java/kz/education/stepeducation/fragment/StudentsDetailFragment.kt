@@ -1,10 +1,11 @@
-package kz.education.stepeducation
+package kz.education.stepeducation.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import kz.education.stepeducation.R
 
 class StudentsDetailFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
