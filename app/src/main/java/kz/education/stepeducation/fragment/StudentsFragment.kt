@@ -2,6 +2,7 @@ package kz.education.stepeducation.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +15,7 @@ import kz.education.stepeducation.data.Student
 import kotlinx.android.synthetic.main.fragment_students.*
 import kz.education.stepeducation.utils.JavaExample
 
-class StudentsFragment : Fragment(){
+class StudentsFragment : Fragment(), View.OnClickListener{
 
     //Student
     //ViewHolder
@@ -40,17 +41,28 @@ class StudentsFragment : Fragment(){
                 container,
                 false)
 
+        return rootView
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initializeViews()
         initializeData()
         initializeLayoutManager()
         initializeAdapter()
-
-        return rootView
     }
 
     fun initializeViews(){
-        JavaExample().initiateExperiment()
         recyclerview_fragment_students?.visibility = View.VISIBLE
+        button_fragment_students_action?.setOnClickListener(this)
+    }
+
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.button_fragment_students_action -> {
+                Log.d("CALLED", "INVOKED")
+            }
+        }
     }
 
     fun initializeLayoutManager(){
@@ -66,10 +78,6 @@ class StudentsFragment : Fragment(){
         students.add(Student("Vasya", "Good Student"))
         students.add(Student("John", "Bad Student"))
         students.add(Student("Log", "Average Student"))
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
