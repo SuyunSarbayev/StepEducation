@@ -21,7 +21,6 @@ class StudentsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        Log.d("Adapter", "onCreateViewHolder")
         var view = LayoutInflater.from(context).inflate(R.layout.viewholder_student, parent, false)
         return StudentsHolder(view)
     }
@@ -29,7 +28,7 @@ class StudentsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
     override fun getItemCount(): Int {
         return students?.size ?: 0
     }
-
+    
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         Log.d("Adapter", "onBindViewHolder")
         (holder as StudentsHolder).initiateBind(students.get(position))

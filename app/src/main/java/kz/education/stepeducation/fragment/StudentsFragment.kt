@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import kz.education.stepeducation.R
 import kz.education.stepeducation.adapter.StudentsAdapter
 import kz.education.stepeducation.data.Student
+
+import kotlinx.android.synthetic.main.fragment_students.*
+import kz.education.stepeducation.utils.JavaExample
 
 class StudentsFragment : Fragment(){
 
@@ -21,8 +23,6 @@ class StudentsFragment : Fragment(){
     var rootView: View? = null
 
     var students: ArrayList<Student> = ArrayList() // Контейнер с деталями
-
-    var recyclerViewStudents: RecyclerView? = null // Автосалон
 
     var studentsAdapter: StudentsAdapter? = null // Рабочий на конвеере
 
@@ -49,41 +49,23 @@ class StudentsFragment : Fragment(){
     }
 
     fun initializeViews(){
-        recyclerViewStudents = rootView?.findViewById(R.id.recyclerview_fragment_students)
+        JavaExample().initiateExperiment()
+        recyclerview_fragment_students?.visibility = View.VISIBLE
     }
 
     fun initializeLayoutManager(){
-        recyclerViewStudents?.layoutManager = LinearLayoutManager(context)
+        recyclerview_fragment_students?.layoutManager = LinearLayoutManager(context)
     }
 
     fun initializeAdapter(){
         studentsAdapter = StudentsAdapter(context, students)
-        recyclerViewStudents?.adapter = studentsAdapter
+        recyclerview_fragment_students?.adapter = studentsAdapter
     }
 
     fun initializeData(){
         students.add(Student("Vasya", "Good Student"))
         students.add(Student("John", "Bad Student"))
         students.add(Student("Log", "Average Student"))
-        students.add(Student("Log", "Average Student"))
-        students.add(Student("Log", "Average Student"))
-        students.add(Student("Log", "Average Student"))
-        students.add(Student("Log", "Average Student"))
-        students.add(Student("Log", "Average Student"))
-        students.add(Student("Log", "Average Student"))
-        students.add(Student("Log", "Average Student"))
-        students.add(Student("Log", "Average Student"))
-        students.add(Student("Log", "Average Student"))
-        students.add(Student("Log", "Average Student"))
-        students.add(Student("Log", "Average Student"))
-        students.add(Student("Log", "Average Student"))
-        students.add(Student("Log", "Average Student"))
-        students.add(Student("Log", "Average Student"))
-        students.add(Student("Log", "Average Student"))
-        students.add(Student("Log", "Average Student"))
-        students.add(Student("Log", "Average Student"))
-        students.add(Student("Log", "Average Student"))
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
