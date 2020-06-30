@@ -1,4 +1,4 @@
-package kz.education.stepeducation.adapter
+package kz.education.stepeducation.presentation.adapter
 
 import android.content.Context
 import android.util.Log
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kz.education.stepeducation.R
 import kz.education.stepeducation.data.Student
-import kz.education.stepeducation.viewholder.StudentsHolder
+import kz.education.stepeducation.presentation.viewholder.StudentsHolder
 
 // Рабочии на конвеере
 class StudentsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {

@@ -1,6 +1,5 @@
-package kz.education.stepeducation.fragment
+package kz.education.stepeducation.presentation.fragment
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,23 +8,33 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import kz.education.stepeducation.R
-import kz.education.stepeducation.adapter.StudentsAdapter
+import kz.education.stepeducation.presentation.adapter.StudentsAdapter
 import kz.education.stepeducation.data.Student
 
 import kotlinx.android.synthetic.main.fragment_students.*
-import kz.education.stepeducation.utils.JavaExample
+import kz.education.stepeducation.presentation.contract.StudentsFragmentContract
+import kz.education.stepeducation.presentation.presenters.StudentsFragmentPresenter
 
-class StudentsFragment : Fragment(), View.OnClickListener{
+class StudentsFragment :
+    Fragment(),
+    StudentsFragmentContract.View,
+    View.OnClickListener{
 
     //Student
     //ViewHolder
     //Adapter
 
+    // Interface
+    // View
+    // Presenter
+    // Model
     var rootView: View? = null
 
     var students: ArrayList<Student> = ArrayList() // Контейнер с деталями
 
     var studentsAdapter: StudentsAdapter? = null // Рабочий на конвеере
+
+    lateinit var presenter: StudentsFragmentPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,14 +56,15 @@ class StudentsFragment : Fragment(), View.OnClickListener{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initializeViews()
-        initializeData()
+        initializePresenter()
         initializeLayoutManager()
         initializeAdapter()
+        presenter.initializeData()
     }
 
-    fun initializeViews(){
-        recyclerview_fragment_students?.visibility = View.VISIBLE
-        button_fragment_students_action?.setOnClickListener(this)
+    override fun initializePresenter() {
+        presenter = StudentsFragmentPresenter()
+        presenter.attach(this)
     }
 
     override fun onClick(v: View?) {
@@ -65,50 +75,33 @@ class StudentsFragment : Fragment(), View.OnClickListener{
         }
     }
 
-    fun initializeLayoutManager(){
+    override fun initializeViews(){
+        recyclerview_fragment_students?.visibility = View.VISIBLE
+    }
+
+    override fun initializeLayoutManager(){
         recyclerview_fragment_students?.layoutManager = LinearLayoutManager(context)
     }
 
-    fun initializeAdapter(){
+    override fun initializeAdapter(){
         studentsAdapter = StudentsAdapter(context, students)
         recyclerview_fragment_students?.adapter = studentsAdapter
     }
 
-    fun initializeData(){
-        students.add(Student("Vasya", "Good Student"))
-        students.add(Student("John", "Bad Student"))
-        students.add(Student("Log", "Average Student"))
+    override fun processData(students: ArrayList<Student>) {
+        this.students.clear()
+        this.students.addAll(students)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun initiateUpdateAdapter() {
+        studentsAdapter?.notifyDataSetChanged()
     }
 
-    override fun onStop() {
-        super.onStop()
+    override fun initializeListeners() {
+        button_fragment_students_action?.setOnClickListener(this)
     }
 
-    override fun onStart() {
-        super.onStart()
-    }
+    override fun initializeArguments() {}
 
-    override fun onPause() {
-        super.onPause()
-    }
-
-    override fun onResume() {
-        super.onResume()
-    }
-
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-    }
+    override fun initializeDependencies() {}
 }

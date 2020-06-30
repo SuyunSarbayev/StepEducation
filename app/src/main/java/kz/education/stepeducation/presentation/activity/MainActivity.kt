@@ -1,4 +1,4 @@
-package kz.education.stepeducation.activity
+package kz.education.stepeducation.presentation.activity
 
 import android.app.Activity
 import android.content.Intent

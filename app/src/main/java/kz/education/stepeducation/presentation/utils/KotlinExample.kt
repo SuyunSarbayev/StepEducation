@@ -1,4 +1,4 @@
-package kz.education.stepeducation.utils
+package kz.education.stepeducation.presentation.utils
 
 import android.util.Log
 

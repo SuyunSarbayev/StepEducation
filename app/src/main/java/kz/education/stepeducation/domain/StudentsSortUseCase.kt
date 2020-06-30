@@ -1,4 +1,4 @@
-package kz.education.stepeducation
+package kz.education.stepeducation.domain
 
 class StudentsSortUseCase {
 

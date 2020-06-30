@@ -1,4 +1,4 @@
-package kz.education.stepeducation.fragment
+package kz.education.stepeducation.presentation.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

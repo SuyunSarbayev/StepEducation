@@ -1,11 +1,10 @@
-package kz.education.stepeducation.activity
+package kz.education.stepeducation.presentation.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import kz.education.stepeducation.R
-import kz.education.stepeducation.fragment.StudentsDetailFragment
-import kz.education.stepeducation.fragment.StudentsFragment
+import kz.education.stepeducation.presentation.fragment.StudentsFragment
 
 class StudentsActivity : AppCompatActivity(){
 

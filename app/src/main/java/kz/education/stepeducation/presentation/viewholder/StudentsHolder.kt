@@ -1,4 +1,4 @@
-package kz.education.stepeducation.viewholder
+package kz.education.stepeducation.presentation.viewholder
 
 import android.content.Context
 import android.view.View
