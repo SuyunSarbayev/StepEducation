@@ -70,6 +70,7 @@ class StudentsFragment :
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.button_fragment_students_action -> {
+                presenter.initiateSortStudentsByName()
                 Log.d("CALLED", "INVOKED")
             }
         }

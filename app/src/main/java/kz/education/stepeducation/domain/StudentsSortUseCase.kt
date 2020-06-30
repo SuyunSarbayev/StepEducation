@@ -1,14 +1,14 @@
 package kz.education.stepeducation.domain
 
+import kz.education.stepeducation.data.Student
+
 class StudentsSortUseCase {
 
-    fun initiateSortStudentsByName(students: ArrayList<String>) : ArrayList<String>? {
-        //TODO write function
-        return null
+    fun initiateSortStudentsByName(students: ArrayList<Student>) : ArrayList<Student>? {
+        return students.apply { sortBy{student ->  student.name} }
     }
 
-    fun initiateSortStudentsRandom(students: ArrayList<String>) : ArrayList<String>? {
-        //TODO write function
-        return null
+    fun initiateSortStudentsRandom(students: ArrayList<Student>) : ArrayList<Student>? {
+        return students.apply { shuffle() }
     }
 }
