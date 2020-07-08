@@ -18,7 +18,7 @@ class StudentsDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         var view: View = LayoutInflater.from(context).inflate(
-            R.layout.activity_registration,
+            R.layout.fragment_students,
             container,
             false)
 

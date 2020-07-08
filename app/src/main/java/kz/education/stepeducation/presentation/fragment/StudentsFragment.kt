@@ -1,5 +1,6 @@
 package kz.education.stepeducation.presentation.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -102,7 +103,9 @@ class StudentsFragment :
         button_fragment_students_action?.setOnClickListener(this)
     }
 
-    override fun initializeArguments() {}
+    override fun initializeArguments() {
+        Log.d("ARGUMENT DATA: ", arguments?.getString("DATA") ?: "EMPTY DATA")
+    }
 
     override fun initializeDependencies() {}
 }

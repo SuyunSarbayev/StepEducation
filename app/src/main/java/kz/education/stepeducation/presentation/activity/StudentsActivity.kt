@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import kz.education.stepeducation.R
 import kz.education.stepeducation.presentation.fragment.StudentsFragment
+import kz.education.stepeducation.presentation.fragment.ViewPagerFragment
 
 class StudentsActivity : AppCompatActivity(){
 
@@ -19,13 +20,16 @@ class StudentsActivity : AppCompatActivity(){
 
     fun initializeDefaultFragment(){
         if(currentFragment == null){
-            currentFragment = StudentsFragment()
+            currentFragment = ViewPagerFragment().apply {
+                arguments = Bundle().apply {
+                    putString("DATA", "OKAY")
+                }
+            }
             displayFragment(currentFragment!!)
         }
     }
 
     fun displayFragment(fragment: Fragment){
-
         this.currentFragment = fragment
         var fragmentTransaction = supportFragmentManager.beginTransaction()
         supportFragmentManager.executePendingTransactions()
