@@ -13,13 +13,17 @@ import kz.education.stepeducation.presentation.adapter.StudentsAdapter
 import kz.education.stepeducation.data.Student
 
 import kotlinx.android.synthetic.main.fragment_students.*
+import kz.education.stepeducation.presentation.base.BaseFragment
 import kz.education.stepeducation.presentation.contract.StudentsFragmentContract
 import kz.education.stepeducation.presentation.presenters.StudentsFragmentPresenter
 
 class StudentsFragment :
-    Fragment(),
+    BaseFragment(),
     StudentsFragmentContract.View,
     View.OnClickListener{
+    override fun initializeLayout(): Int {
+        return R.layout.fragment_students
+    }
 
     //Student
     //ViewHolder
@@ -29,7 +33,6 @@ class StudentsFragment :
     // View
     // Presenter
     // Model
-    var rootView: View? = null
 
     var students: ArrayList<Student> = ArrayList() // Контейнер с деталями
 
@@ -46,10 +49,7 @@ class StudentsFragment :
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        rootView= LayoutInflater.from(context).inflate(
-            R.layout.fragment_students,
-                container,
-                false)
+        super.onCreateView(inflater, container, savedInstanceState)
 
         return rootView
     }
