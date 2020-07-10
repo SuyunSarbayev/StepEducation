@@ -1,18 +1,19 @@
 package kz.education.stepeducation.presentation.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Room
+import androidx.room.RoomDatabase
 import kz.education.stepeducation.R
 import kz.education.stepeducation.presentation.adapter.StudentsAdapter
-import kz.education.stepeducation.data.Student
+import kz.education.stepeducation.domain.Student
 
 import kotlinx.android.synthetic.main.fragment_students.*
+import kz.education.stepeducation.data.StepEducationDatabase
 import kz.education.stepeducation.presentation.base.BaseFragment
 import kz.education.stepeducation.presentation.contract.StudentsFragmentContract
 import kz.education.stepeducation.presentation.presenters.StudentsFragmentPresenter

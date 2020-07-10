@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kz.education.stepeducation.R
-import kz.education.stepeducation.data.Student
+import kz.education.stepeducation.domain.Student
 import kz.education.stepeducation.presentation.viewholder.StudentsHolder
 
 // Рабочии на конвеере

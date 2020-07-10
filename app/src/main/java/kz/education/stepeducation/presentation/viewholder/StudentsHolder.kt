@@ -3,7 +3,7 @@ package kz.education.stepeducation.presentation.viewholder
 import android.content.Context
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import kz.education.stepeducation.data.Student
+import kz.education.stepeducation.domain.Student
 
 import kotlinx.android.synthetic.main.viewholder_student.view.*
 

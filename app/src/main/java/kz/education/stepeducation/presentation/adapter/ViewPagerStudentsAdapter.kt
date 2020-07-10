@@ -1,11 +1,10 @@
 package kz.education.stepeducation.presentation.adapter
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import kz.education.stepeducation.data.Student
+import kz.education.stepeducation.domain.Student
 import kz.education.stepeducation.presentation.fragment.StudentsDetailFragment
 import kz.education.stepeducation.presentation.utils.Constants
 

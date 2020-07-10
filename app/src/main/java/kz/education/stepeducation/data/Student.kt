@@ -1,42 +1,24 @@
 package kz.education.stepeducation.data
 
-import android.os.Parcel
-import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.ForeignKey.CASCADE
+import androidx.room.PrimaryKey
 
-class Student : Parcelable{
+@Entity(foreignKeys = arrayOf(ForeignKey(
+    entity = StudentsGroup::class,
+    parentColumns = arrayOf("title"),
+    childColumns = arrayOf("groupTitle"),
+    onDelete = CASCADE)))
+class Student {
 
-    var name: String? = ""
+    @PrimaryKey
+    var name: String = ""
 
-    var description: String? = ""
+    var groupTitle: String = ""
 
-    constructor()
-
-    constructor(parcel: Parcel)  {
-        name = parcel.readString()
-        description = parcel.readString()
+    override fun toString(): String {
+        return "Student(name='$name')"
     }
 
-    constructor(name: String?, description: String?){
-        this.name = name
-        this. description = description
-    }
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(name)
-        parcel.writeString(description)
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<Student> {
-        override fun createFromParcel(parcel: Parcel): Student {
-            return Student(parcel)
-        }
-
-        override fun newArray(size: Int): Array<Student?> {
-            return arrayOfNulls(size)
-        }
-    }
 }

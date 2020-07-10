@@ -1,7 +1,5 @@
 package kz.education.stepeducation.domain
 
-import kz.education.stepeducation.data.Student
-
 class StudentsSortUseCase {
 
     fun initiateSortStudentsByName(students: ArrayList<Student>) : ArrayList<Student>? {

@@ -1,6 +1,6 @@
 package kz.education.stepeducation.presentation.presenters
 
-import kz.education.stepeducation.data.Student
+import kz.education.stepeducation.domain.Student
 import kz.education.stepeducation.domain.StudentsSortUseCase
 import kz.education.stepeducation.presentation.contract.StudentsFragmentContract
 
