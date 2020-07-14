@@ -14,9 +14,13 @@ import kz.education.stepeducation.domain.Student
 
 import kotlinx.android.synthetic.main.fragment_students.*
 import kz.education.stepeducation.data.StepEducationDatabase
+import kz.education.stepeducation.di.component.DaggerUseCaseComponent
+import kz.education.stepeducation.di.module.UseCaseModule
+import kz.education.stepeducation.domain.StudentsSortUseCase
 import kz.education.stepeducation.presentation.base.BaseFragment
 import kz.education.stepeducation.presentation.contract.StudentsFragmentContract
 import kz.education.stepeducation.presentation.presenters.StudentsFragmentPresenter
+import javax.inject.Inject
 
 class StudentsFragment :
     BaseFragment(),
@@ -34,6 +38,8 @@ class StudentsFragment :
     // View
     // Presenter
     // Model
+
+    @Inject lateinit var studentsSortUseCase: StudentsSortUseCase
 
     var students: ArrayList<Student> = ArrayList() // Контейнер с деталями
 
@@ -57,6 +63,14 @@ class StudentsFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        DaggerUseCaseComponent
+            .builder()
+            .useCaseModule(UseCaseModule())
+            .build()
+            .inject(this)
+
+        studentsSortUseCase.initiateSortStudentsByName(ArrayList())
         initializeViews()
         initializePresenter()
         initializeLayoutManager()

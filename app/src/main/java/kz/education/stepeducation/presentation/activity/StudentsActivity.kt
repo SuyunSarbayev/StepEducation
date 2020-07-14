@@ -20,7 +20,7 @@ class StudentsActivity : AppCompatActivity(){
 
     fun initializeDefaultFragment(){
         if(currentFragment == null){
-            currentFragment = ViewPagerFragment().apply {
+            currentFragment = StudentsFragment().apply {
                 arguments = Bundle().apply {
                     putString("DATA", "OKAY")
                 }
