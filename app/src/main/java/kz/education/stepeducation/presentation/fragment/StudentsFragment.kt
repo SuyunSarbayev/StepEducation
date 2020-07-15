@@ -6,14 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.room.Room
-import androidx.room.RoomDatabase
-import kz.education.stepeducation.R
 import kz.education.stepeducation.presentation.adapter.StudentsAdapter
 import kz.education.stepeducation.domain.Student
 
 import kotlinx.android.synthetic.main.fragment_students.*
-import kz.education.stepeducation.data.StepEducationDatabase
+import kz.education.stepeducation.data.Currency
+import kz.education.stepeducation.data.api.ApiConnection
 import kz.education.stepeducation.di.component.DaggerUseCaseComponent
 import kz.education.stepeducation.di.module.UseCaseModule
 import kz.education.stepeducation.domain.StudentsSortUseCase
@@ -21,13 +19,16 @@ import kz.education.stepeducation.presentation.base.BaseFragment
 import kz.education.stepeducation.presentation.contract.StudentsFragmentContract
 import kz.education.stepeducation.presentation.presenters.StudentsFragmentPresenter
 import javax.inject.Inject
+import retrofit2.Call
+import retrofit2.Response
+
 
 class StudentsFragment :
     BaseFragment(),
     StudentsFragmentContract.View,
     View.OnClickListener{
     override fun initializeLayout(): Int {
-        return R.layout.fragment_students
+        return kz.education.stepeducation.R.layout.fragment_students
     }
 
     //Student
@@ -71,6 +72,21 @@ class StudentsFragment :
             .inject(this)
 
         studentsSortUseCase.initiateSortStudentsByName(ArrayList())
+
+        val call = ApiConnection().initializeAPI().initiateGetCurrencies()
+        call.enqueue(object : retrofit2.Callback<Currency>{
+            override fun onResponse(call: Call<Currency>, response: Response<Currency>) {
+                if (response.isSuccessful){
+                    Log.d("DATA: " , response.body().toString())
+                }else{
+                    Log.d("FAILURE: ", response.errorBody().toString())
+                }
+            }
+            override fun onFailure(call: Call<Currency>, t: Throwable) {
+                Log.d("FAILURE: ", t.message)
+            }
+        })
+
         initializeViews()
         initializePresenter()
         initializeLayoutManager()
@@ -85,7 +101,7 @@ class StudentsFragment :
 
     override fun onClick(v: View?) {
         when(v?.id){
-            R.id.button_fragment_students_action -> {
+            kz.education.stepeducation.R.id.button_fragment_students_action -> {
                 presenter.initiateSortStudentsByName()
                 Log.d("CALLED", "INVOKED")
             }
