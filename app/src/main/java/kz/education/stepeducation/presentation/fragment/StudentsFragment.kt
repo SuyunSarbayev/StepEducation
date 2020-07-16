@@ -6,6 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import io.reactivex.Observable
+import io.reactivex.Observer
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.observers.DisposableObserver
+import io.reactivex.schedulers.Schedulers
 import kz.education.stepeducation.presentation.adapter.StudentsAdapter
 import kz.education.stepeducation.domain.Student
 
@@ -21,7 +28,7 @@ import kz.education.stepeducation.presentation.presenters.StudentsFragmentPresen
 import javax.inject.Inject
 import retrofit2.Call
 import retrofit2.Response
-
+import kotlin.collections.ArrayList
 
 class StudentsFragment :
     BaseFragment(),
@@ -73,24 +80,13 @@ class StudentsFragment :
 
         studentsSortUseCase.initiateSortStudentsByName(ArrayList())
 
-        val call = ApiConnection().initializeAPI().initiateGetCurrencies()
-        call.enqueue(object : retrofit2.Callback<Currency>{
-            override fun onResponse(call: Call<Currency>, response: Response<Currency>) {
-                if (response.isSuccessful){
-                    Log.d("DATA: " , response.body().toString())
-                }else{
-                    Log.d("FAILURE: ", response.errorBody().toString())
-                }
-            }
-            override fun onFailure(call: Call<Currency>, t: Throwable) {
-                Log.d("FAILURE: ", t.message)
-            }
-        })
 
         initializeViews()
         initializePresenter()
         initializeLayoutManager()
         initializeAdapter()
+
+        presenter.initiateRequestCurrencies()
         presenter.initializeData()
     }
 

@@ -22,6 +22,8 @@ interface StudentsFragmentContract {
 
         fun initiateSortStudentsByName()
 
+        fun initiateRequestCurrencies()
+
         fun initiateSortStudentsRandom()
     }
 }
