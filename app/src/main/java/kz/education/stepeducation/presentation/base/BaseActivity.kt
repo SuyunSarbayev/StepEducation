@@ -1,10 +1,7 @@
 package kz.education.stepeducation.presentation.base
 
-import android.content.Context
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.util.AttributeSet
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 
 abstract class BaseActivity : AppCompatActivity() {
